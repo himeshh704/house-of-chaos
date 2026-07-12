@@ -3,335 +3,580 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="HOUSE OF CHAOS - An exclusive ultra-premium nightlife event on 25 July at Club Nirvana, Jodhpur. Experience elite music, golden light show, and premium atmosphere.">
-  <title>HOUSE OF CHAOS | Premium Nightlife Experience</title>
+  <meta name="description" content="HOUSE OF CHAOS — Jodhpur's exclusive electronic music night. 25 July at Club Nirvana. Limited to 80 entry passes.">
+  <title>House of Chaos — 25.07</title>
   
-  <!-- SEO Meta Tags -->
-  <meta property="og:title" content="HOUSE OF CHAOS | Premium Nightlife Experience">
-  <meta property="og:description" content="An exclusive ultra-premium nightlife event at Club Nirvana, Jodhpur. 25 July. Enter the Chaos. Leave with Memories.">
+  <meta property="og:title" content="House of Chaos — Club Nirvana">
+  <meta property="og:description" content="Jodhpur's exclusive electronic music night. 25 July. Limited to 80 entry passes.">
   <meta property="og:type" content="website">
   <meta name="theme-color" content="#050505">
   
-  <!-- CSS Link -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,700;1,300&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="loading">
 
-  <!-- Premium Preloader -->
+  <!-- Admin dynamic setup -->
+  <script id="admin-config" type="application/json">
+  {
+    "eventDate": "25 July",
+    "eventTime": "7 PM Onwards",
+    "venueName": "Club Nirvana",
+    "venueLocation": "Jodhpur",
+    "contactNumber": "917023438522",
+    "passesTotal": 80,
+    "passesReserved": 52,
+    "currentPhase": "PHASE 1",
+    "prices": {
+      "stag": 699,
+      "stagCover": 1500,
+      "couple": 599,
+      "coupleCover": 2000,
+      "girls": 0,
+      "girlsCover": 1000,
+      "vipSmall": 7999,
+      "vipBig": 11999
+    }
+  }
+  </script>
+
+  <!-- Preloader -->
   <div id="loader">
-    <div class="loader-logo">HOUSE OF <span>CHAOS</span></div>
-    <div class="loader-bar"></div>
+    <div class="loader-inner">
+      <div class="loader-logo">HOUSE OF <span>CHAOS</span></div>
+      <div class="loader-bar-bg"><div id="loader-bar"></div></div>
+    </div>
   </div>
 
-  <!-- Champagne Gold Floating Particles Background -->
   <canvas id="particle-canvas"></canvas>
 
   <div id="app-content">
 
-    <!-- Luxury Navigation Header -->
     <header class="nav-header">
-      <a href="#" class="nav-logo">HOUSE OF <span>CHAOS</span></a>
-      <nav class="nav-links">
-        <a href="#about">The Concept</a>
-        <a href="#passes">Exclusive Entry</a>
-        <a href="#experience">Expect</a>
-        <a href="#venue">Venue</a>
-        <a href="https://wa.me/917023438522?text=Hello%20House%20of%20Chaos%20Team%2C%20I%20would%20like%20to%20enquire%20about%20passes%20for%20House%20of%20Chaos%20on%2025%20July%20at%20Club%20Nirvana%2C%20Jodhpur." class="nav-btn" target="_blank">RESERVE ENTRY</a>
-      </nav>
-      <button class="mobile-menu-toggle" aria-label="Toggle Menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+      <div class="nav-container">
+        <a href="#" class="nav-logo">HOUSE OF <span>CHAOS</span></a>
+        <nav class="nav-links">
+          <a href="#concept">Concept</a>
+          <a href="#passes">Passes</a>
+          <a href="#vip">VIP Tables</a>
+          <a href="#venue">Location</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+        <button class="mobile-menu-toggle" aria-label="Toggle Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-      <div class="hero-background"></div>
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
       <div class="hero-overlay"></div>
-      <div class="hero-content">
-        <span class="hero-subtitle">EXCLUSIVE EVENT</span>
-        <h1 class="hero-title">HOUSE OF CHAOS</h1>
-        
-        <div class="hero-meta-details">
-          <span>25 JULY</span>
-          <span class="dot"></span>
-          <span>CLUB NIRVANA • JODHPUR</span>
-          <span class="dot"></span>
-          <span>STARTING 7 PM</span>
+      <div class="hero-container">
+        <div class="hero-badge-container">
+          <span class="hero-badge">Jodhpur — 25.07.26</span>
         </div>
-        
-        <p class="hero-tagline">"Enter the Chaos. Leave with Memories."</p>
-        <p class="hero-description">An exclusive nightlife experience where music, energy and atmosphere collide for one unforgettable night.</p>
-        
-        <div class="hero-ctas">
-          <a href="https://wa.me/917023438522?text=Hello%20House%20of%20Chaos%20Team%2C%20I%20would%20like%20to%20enquire%20about%20passes%20for%20House%20of%20Chaos%20on%2025%20July%20at%20Club%20Nirvana%2C%20Jodhpur." class="btn btn-primary" target="_blank">RESERVE YOUR ENTRY</a>
-          <a href="https://wa.me/917023438522?text=Hello%20House%20of%20Chaos%20Team%2C%20I%20would%20like%20to%20enquire%20about%20passes%20for%20House%20of%20Chaos%20on%2025%20July%20at%20Club%20Nirvana%2C%20Jodhpur." class="btn btn-secondary" target="_blank">WHATSAPP NOW</a>
-        </div>
-      </div>
-    </section>
 
-    <!-- About Section -->
-    <section id="about" class="section-darker">
-      <div class="about reveal">
-        <div class="about-content">
-          <span class="section-subtitle">THE CONCEPT</span>
-          <h2>THE CHAOS AWAITS</h2>
-          <p class="about-text">
-            House of Chaos isn't just another party. It's a carefully curated nightlife experience where music, atmosphere and energy combine into one unforgettable evening.
-          </p>
-          <div class="about-highlight">
-            "A high-end nightlife experience worth 10,000+ per table, designed exclusively for premium music connoisseurs."
+        <div class="hero-content">
+          <div class="hero-tagline-container">
+            <span class="hero-tagline-item">Deep Tech</span>
+            <span class="hero-tagline-divider">/</span>
+            <span class="hero-tagline-item">Underground House</span>
+            <span class="hero-tagline-divider">/</span>
+            <span class="hero-tagline-item">Audio-Visual Shift</span>
           </div>
-          <p>
-            Hosted at Club Nirvana, Jodhpur, House of Chaos brings together premium music, immersive visuals and an electrifying crowd for a night unlike anything else in the city.
-          </p>
-        </div>
-        
-        <div class="about-image-container">
-          <div class="about-image-frame">
-            <img src="assets/gallery_lightshow.png" alt="House of Chaos Light Show" class="about-img">
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- Pass Section -->
-    <section id="passes">
-      <div class="section-header reveal">
-        <span class="section-subtitle">TICKET TIERS</span>
-        <h2 class="section-title">EXCLUSIVE ENTRY</h2>
-        <p>Choose Your Experience. Spaces are extremely limited.</p>
-      </div>
-
-      <div class="pass-grid reveal">
-        <!-- Card 1: Girls -->
-        <div class="pass-card">
-          <div>
-            <h3 class="pass-tier">GIRLS ENTRY</h3>
-            <div class="pass-price">FREE</div>
-            <ul class="pass-benefits">
-              <li>Complimentary Entry</li>
-              <li>Dance Floor Access</li>
-              <li>Full Event Access</li>
-            </ul>
-          </div>
-          <a href="https://wa.me/917023438522?text=Hello%20House%20of%20Chaos%20Team%2C%20I%20would%20like%20to%20register%20for%20the%20GIRLS%20ENTRY%20%28Free%29%20pass." class="btn btn-secondary" target="_blank">GET PASS</a>
-        </div>
-
-        <!-- Card 2: Boys -->
-        <div class="pass-card featured">
-          <div>
-            <h3 class="pass-tier">BOYS ENTRY</h3>
-            <div class="pass-price">₹699</div>
-            <ul class="pass-benefits">
-              <li>Full Event Access</li>
-              <li>Premium Club Experience</li>
-              <li>Dance Floor Access</li>
-            </ul>
-          </div>
-          <a href="https://wa.me/917023438522?text=Hello%20House%20of%20Chaos%20Team%2C%20I%20would%20like%20to%20book%20the%20BOYS%20ENTRY%20pass%20for%20%E2%82%B9699." class="btn btn-primary" target="_blank">BOOK NOW</a>
-        </div>
-
-        <!-- Card 3: Couples -->
-        <div class="pass-card">
-          <div>
-            <h3 class="pass-tier">COUPLE ENTRY</h3>
-            <div class="pass-price">₹549</div>
-            <ul class="pass-benefits">
-              <li>Couple Entry</li>
-              <li>Full Event Access</li>
-              <li>Priority Entry</li>
-            </ul>
-          </div>
-          <a href="https://wa.me/917023438522?text=Hello%20House%20of%20Chaos%20Team%2C%20I%20would%20like%20to%20book%20the%20COUPLE%20ENTRY%20pass%20for%20%E2%82%B9549." class="btn btn-secondary" target="_blank">BOOK NOW</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section id="experience" class="section-darker">
-      <div class="section-header reveal">
-        <span class="section-subtitle">THE ATMOSPHERE</span>
-        <h2 class="section-title">WHAT TO EXPECT</h2>
-        <p>Curating details for a memorable, premium underground party.</p>
-      </div>
-
-      <div class="experience-grid reveal">
-        <!-- 1. Elite DJ -->
-        <div class="experience-card">
-          <div class="experience-icon">
-            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-              <path d="M9 18V5l12-2v13" />
-              <circle cx="6" cy="18" r="3" />
-              <circle cx="18" cy="16" r="3" />
-            </svg>
-          </div>
-          <h3>Elite DJ Experience</h3>
-          <p>World-class selectors mapping deep tech, underground house, and melodic techno sets.</p>
-        </div>
-
-        <!-- 2. Light Show -->
-        <div class="experience-card">
-          <div class="experience-icon">
-            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-              <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
-              <circle cx="12" cy="12" r="5" />
-            </svg>
-          </div>
-          <h3>Golden Light Show</h3>
-          <p>Immersive visual architecture, programming warm golden beams and cinematic light flows.</p>
-        </div>
-
-        <!-- 3. Premium Ambience -->
-        <div class="experience-card">
-          <div class="experience-icon">
-            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-              <path d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20Z" />
-              <path d="m12 6 2.5 5.5H20l-4.5 4L17 21l-5-3.5L7 21l1.5-5.5L4 11.5h5.5L12 6Z" />
-            </svg>
-          </div>
-          <h3>Premium Club Ambience</h3>
-          <p>Sleek dark interiors, textured gold details, and ambient mist reminiscent of Dubai VIP clubs.</p>
-        </div>
-
-        <!-- 4. High Energy -->
-        <div class="experience-card">
-          <div class="experience-icon">
-            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-            </svg>
-          </div>
-          <h3>High Energy Dance Floor</h3>
-          <p>An acoustic-treated space pulsing with sub-bass, heavy smoke, and electric soundwaves.</p>
-        </div>
-
-        <!-- 5. Instagram Moments -->
-        <div class="experience-card">
-          <div class="experience-icon">
-            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-              <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
-              <circle cx="12" cy="13" r="4" />
-            </svg>
-          </div>
-          <h3>Instagram-Worthy Moments</h3>
-          <p>Golden backdrops, luxurious neon branding elements, and flash photo corners.</p>
-        </div>
-
-        <!-- 6. Non-stop Music -->
-        <div class="experience-card">
-          <div class="experience-icon">
-            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-              <path d="M3 18v-6a9 9 0 0 1 18 0v6" />
-              <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" />
-            </svg>
-          </div>
-          <h3>Non-Stop Music</h3>
-          <p>Seamless shifts and custom mixes designed to lock the dance floor in a hypnotic rhythm.</p>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- Enquiry Section -->
-    <section id="enquiry" class="section-darker">
-      <div class="enquiry reveal">
-        <div class="enquiry-wrapper">
-          <span class="section-subtitle">RESERVATIONS</span>
-          <h2>RESERVE YOUR ENTRY</h2>
-          <p>Fill in the form below to initiate booking. Our VIP relations coordinator will contact you immediately on WhatsApp.</p>
+          <h1 class="hero-title">
+            HOUSE OF <br>
+            <span class="gradient-text">CHAOS</span>
+          </h1>
           
-          <form id="enquiry-form" class="enquiry-form">
-            <div class="form-group">
-              <label for="enquiry-name" class="form-label">Full Name</label>
-              <input type="text" id="enquiry-name" class="form-input" placeholder="e.g. Alexander Mercer" required>
-            </div>
-            
-            <div class="form-group">
-              <label for="enquiry-phone" class="form-label">Phone Number</label>
-              <input type="tel" id="enquiry-phone" class="form-input" placeholder="e.g. +91 70234 38522" required>
-            </div>
-            
-            <div class="form-group form-group-full">
-              <label for="enquiry-guests" class="form-label">Number of Guests</label>
-              <input type="number" id="enquiry-guests" class="form-input" min="1" max="50" placeholder="e.g. 4" required>
-            </div>
-            
-            <div class="form-group form-group-full">
-              <button type="submit" class="btn btn-primary">ENQUIRE ON WHATSAPP</button>
-            </div>
-          </form>
+          <div class="hero-meta">
+            <span id="meta-date">25 JULY</span>
+            <span class="slash">/</span>
+            <span id="meta-venue">CLUB NIRVANA, JODHPUR</span>
+            <span class="slash">/</span>
+            <span id="meta-time">19:00 HRS</span>
+          </div>
+
+          <div class="hero-actions">
+            <a href="#passes" class="btn btn-gold">Get Passes</a>
+            <a href="#" class="btn btn-outline whatsapp-link">WhatsApp Host</a>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Venue Section -->
-    <section id="venue">
-      <div class="section-header reveal">
-        <span class="section-subtitle">THE LOCATION</span>
-        <h2 class="section-title">VENUE</h2>
-        <p>Join us at Jodhpur's premier luxury club destination.</p>
+    <!-- SECTION 2: EVENT OVERVIEW -->
+    <section class="section section-dark" id="concept">
+      <div class="container container-narrow text-center">
+        <h2 class="editorial-title">An unrestricted electronic music night.</h2>
+        <p class="overview-text">
+          No generic club playlists. No commercial tags. House of Chaos is Jodhpur's premium underground experiment, blending raw sound design, champagne lighting accents, and pure club energy. Limit is strictly capped at 80 heads.
+        </p>
       </div>
+    </section>
 
-      <div class="venue-container reveal">
-        <div class="venue-info-card">
-          <h3 class="venue-name">Club Nirvana</h3>
-          <div class="venue-city">Jodhpur</div>
-          
-          <ul class="venue-details">
-            <li>
-              <strong>Address</strong>
-              Club Nirvana, Opposite Nirali Dhani, Ram Nagar, Chopasni Road, Jodhpur, Rajasthan 342001
-            </li>
-            <li>
-              <strong>Timing</strong>
-              Doors open at 7:00 PM | Special entry restrictions apply after 9:30 PM
-            </li>
-            <li>
-              <strong>Dress Code</strong>
-              Ultra Luxury / Premium Smart Casuals. Strictly no open footwear/sandals.
-            </li>
-          </ul>
-          
-          <a href="https://maps.google.com/?q=Club+Nirvana+Jodhpur" class="btn btn-primary" target="_blank">GET DIRECTIONS</a>
+    <!-- SECTION 3: HOW IT WORKS (TIMELINE) -->
+    <section class="section section-darker" id="timeline">
+      <div class="container">
+        <h2 class="section-title text-center">How to get in</h2>
+
+        <div class="timeline">
+          <!-- Step 1 -->
+          <div class="timeline-card-wrapper">
+            <div class="timeline-step">01</div>
+            <div class="timeline-card">
+              <h3>Select Pass</h3>
+              <p>Pick your access tier or VIP table from the choices below.</p>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="timeline-card-wrapper">
+            <div class="timeline-step">02</div>
+            <div class="timeline-card">
+              <h3>Connect</h3>
+              <p>Click and open a chat with guest relations on WhatsApp.</p>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="timeline-card-wrapper">
+            <div class="timeline-step">03</div>
+            <div class="timeline-card">
+              <h3>List Check</h3>
+              <p>Our coordinator checks the remaining slot lists and details.</p>
+            </div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="timeline-card-wrapper">
+            <div class="timeline-step">04</div>
+            <div class="timeline-card">
+              <h3>Receive Pass</h3>
+              <p>We generate and send your custom QR entry pass to your chat.</p>
+            </div>
+          </div>
+
+          <!-- Step 5 -->
+          <div class="timeline-card-wrapper">
+            <div class="timeline-step">05</div>
+            <div class="timeline-card">
+              <h3>Enter</h3>
+              <p>Show the code at Nirvana gate for immediate floor access.</p>
+            </div>
+          </div>
         </div>
+
+        <div class="timeline-notice text-center">
+          <p>Every QR entry pass is cryptographically secure and valid for single admission only.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: PASS RESERVATIONS -->
+    <section class="section section-dark" id="passes">
+      <div class="container">
+        <div class="text-center">
+          <span class="phase-indicator" id="phase-badge">Phase 1 Allocations</span>
+          <h2 class="section-title">Passes</h2>
+          <p class="section-subtitle">Prices increase as entry slots fill. Select a tier to enquire.</p>
+        </div>
+
+        <div class="pass-grid">
+          <!-- Card 1: Stag Entry -->
+          <div class="pass-card">
+            <div class="pass-badge">POPULAR</div>
+            <div class="pass-header">
+              <h3>Stag Pass</h3>
+              <div class="pass-price" id="price-stag">₹699</div>
+            </div>
+            <div class="pass-body">
+              <ul class="pass-features">
+                <li>Single male admission</li>
+                <li>Access to the main dance arena</li>
+                <li>Express entry checks</li>
+              </ul>
+              <div class="pass-status">Available</div>
+            </div>
+            <a href="#" class="btn btn-gold-card pass-booking-btn" data-pass="Stag Entry" data-price="₹699">Book Pass</a>
+          </div>
+
+          <!-- Card 2: Stag Entry + Cover -->
+          <div class="pass-card">
+            <div class="pass-header">
+              <h3>Stag + Cover</h3>
+              <div class="pass-price" id="price-stag-cover">₹1,500</div>
+            </div>
+            <div class="pass-body">
+              <ul class="pass-features">
+                <li>Single male admission</li>
+                <li>Includes ₹1000 beverage credit</li>
+                <li>Express entry checks</li>
+              </ul>
+              <div class="pass-status">Selling Fast</div>
+            </div>
+            <a href="#" class="btn btn-gold-card pass-booking-btn" data-pass="Stag Entry + Cover" data-price="₹1500">Book Pass</a>
+          </div>
+
+          <!-- Card 3: Couple Entry -->
+          <div class="pass-card">
+            <div class="pass-header">
+              <h3>Couple Pass</h3>
+              <div class="pass-price" id="price-couple">₹599</div>
+            </div>
+            <div class="pass-body">
+              <ul class="pass-features">
+                <li>Admittance for one couple</li>
+                <li>Main room floor access</li>
+                <li>Priority reception line</li>
+              </ul>
+              <div class="pass-status">Available</div>
+            </div>
+            <a href="#" class="btn btn-gold-card pass-booking-btn" data-pass="Couple Entry" data-price="₹599">Book Pass</a>
+          </div>
+
+          <!-- Card 4: Couple Entry + Cover -->
+          <div class="pass-card">
+            <div class="pass-badge">BEST VALUE</div>
+            <div class="pass-header">
+              <h3>Couple + Cover</h3>
+              <div class="pass-price" id="price-couple-cover">₹2,000</div>
+            </div>
+            <div class="pass-body">
+              <ul class="pass-features">
+                <li>Admittance for one couple</li>
+                <li>Includes ₹1500 beverage credit</li>
+                <li>Fast-track queue check-in</li>
+              </ul>
+              <div class="pass-status">Selling Fast</div>
+            </div>
+            <a href="#" class="btn btn-gold-card pass-booking-btn" data-pass="Couple Entry + Cover" data-price="₹2000">Book Pass</a>
+          </div>
+
+          <!-- Card 5: Girls Entry -->
+          <div class="pass-card">
+            <div class="pass-badge">LIMITED SLOTS</div>
+            <div class="pass-header">
+              <h3>Female Pass</h3>
+              <div class="pass-price" id="price-girls">FREE</div>
+            </div>
+            <div class="pass-body">
+              <ul class="pass-features">
+                <li>Complimentary for first 20 registrations</li>
+                <li>Full room admittance</li>
+                <li>Welcome cocktail included</li>
+              </ul>
+              <div class="pass-status" id="girls-free-status">12/20 claimed</div>
+            </div>
+            <a href="#" class="btn btn-gold-card pass-booking-btn" data-pass="Girls Entry (Free First 20)" data-price="Free">Claim Pass</a>
+          </div>
+
+          <!-- Card 6: Girls Entry + Cover -->
+          <div class="pass-card">
+            <div class="pass-header">
+              <h3>Female + Cover</h3>
+              <div class="pass-price" id="price-girls-cover">₹1,000</div>
+            </div>
+            <div class="pass-body">
+              <ul class="pass-features">
+                <li>Single female admission</li>
+                <li>Includes ₹1000 beverage credit</li>
+                <li>Express entry checks</li>
+              </ul>
+              <div class="pass-status">Available</div>
+            </div>
+            <a href="#" class="btn btn-gold-card pass-booking-btn" data-pass="Girls Entry + Cover" data-price="₹1000">Book Pass</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: VIP TABLE RESERVATIONS -->
+    <section class="section section-darker vip-section" id="vip">
+      <div class="container">
+        <div class="text-center">
+          <h2 class="section-title">VIP Tables</h2>
+          <p class="section-subtitle">Dedicated host runner, premium seating views, and bottle service allowances.</p>
+        </div>
+
+        <div class="vip-grid">
+          <!-- Small Table -->
+          <div class="vip-card">
+            <div class="vip-card-glow"></div>
+            <div class="vip-header">
+              <span class="vip-badge">SILVER SALON</span>
+              <h3>Small Table</h3>
+              <div class="vip-price" id="price-vip-small">₹7,999</div>
+            </div>
+            <ul class="vip-features">
+              <li>Up to 4 guests</li>
+              <li>Includes ₹2,500 food & beverage cover</li>
+              <li>Personal server staff</li>
+              <li>Elevated lounge view</li>
+            </ul>
+            <a href="#" class="btn btn-gold pass-booking-btn" data-pass="Small VIP Table" data-price="₹7,999">Enquire</a>
+          </div>
+
+          <!-- Big Table -->
+          <div class="vip-card featured-vip">
+            <div class="vip-card-glow"></div>
+            <div class="vip-header">
+              <span class="vip-badge gold-badge">ROYAL PLATINUM</span>
+              <h3>Big Table</h3>
+              <div class="vip-price" id="price-vip-big">₹11,999</div>
+            </div>
+            <ul class="vip-features">
+              <li>Up to 8 guests</li>
+              <li>Includes ₹3,999 food & beverage cover</li>
+              <li>Front-row stage placement</li>
+              <li>Dedicated butler & express check-in</li>
+              <li>Dedicated security escort</li>
+            </ul>
+            <a href="#" class="btn btn-gold-highlight pass-booking-btn" data-pass="Big VIP Table" data-price="₹11,999">Enquire</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: EVENT HIGHLIGHTS -->
+    <section class="section section-dark" id="highlights">
+      <div class="container">
+        <h2 class="section-title text-center">What to expect</h2>
+
+        <div class="highlights-grid">
+          <!-- Card 1 -->
+          <div class="highlight-card">
+            <div class="highlight-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="1.5">
+                <path d="M12 2v20M17 5v14M7 9v6M22 8v8M2 10v4"/>
+              </svg>
+            </div>
+            <h3>Elite DJ Experience</h3>
+            <p>Underground selectors mapping techno, house, and electronic frequencies.</p>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="highlight-card">
+            <div class="highlight-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="1.5">
+                <path d="M12 2L2 22h20L12 2zM12 6l6 12H6l6-12z"/>
+              </svg>
+            </div>
+            <h3>Golden Light Show</h3>
+            <p>Curated architectural laser programming casting warm gold beams.</p>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="highlight-card">
+            <div class="highlight-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="1.5">
+                <path d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20zM12 6v12M6 12h12"/>
+              </svg>
+            </div>
+            <h3>Premium Club Ambience</h3>
+            <p>Luxury dark rooms, warm metallic textures, and architectural mist systems.</p>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="highlight-card">
+            <div class="highlight-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="1.5">
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+              </svg>
+            </div>
+            <h3>High Energy Floor</h3>
+            <p>Acoustic sub-bass setups generating visceral dance floor pressure.</p>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="highlight-card">
+            <div class="highlight-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="1.5">
+                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                <circle cx="12" cy="13" r="4"/>
+              </svg>
+            </div>
+            <h3>Worthy Moments</h3>
+            <p>Bespoke visual branding installations for editorial photography.</p>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="highlight-card">
+            <div class="highlight-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="1.5">
+                <circle cx="12" cy="12" r="10"/>
+                <circle cx="12" cy="12" r="4"/>
+              </svg>
+            </div>
+            <h3>Non-Stop Sets</h3>
+            <p>Extended, gapless musical sets designed for continuous rhythm.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7: LIMITED CAPACITY / URGENCY -->
+    <section class="section section-darker" id="urgency">
+      <div class="container container-narrow text-center">
+        <h2 class="section-title">Availability</h2>
         
-        <div class="map-container">
-          <iframe 
-            class="google-map"
-            src="https://maps.google.com/maps?q=Club%20Nirvana,%20Jodhpur&t=&z=15&ie=UTF8&iwloc=&output=embed" 
-            allowfullscreen="" 
-            loading="lazy">
-          </iframe>
-          <div class="map-overlay"></div>
+        <div class="urgency-widget">
+          <div class="urgency-counter">
+            <div class="counter-item">
+              <span id="tickets-reserved" class="counter-number">52</span>
+              <span class="counter-label">Allocated</span>
+            </div>
+            <div class="counter-divider">/</div>
+            <div class="counter-item">
+              <span id="tickets-remaining" class="counter-number">28</span>
+              <span class="counter-label">Remaining</span>
+            </div>
+          </div>
+
+          <div class="progress-bar-container">
+            <div class="progress-bar-fill" id="tickets-progress-fill" style="width: 65%;"></div>
+          </div>
+
+          <p class="urgency-notice">Capped strictly at 80 entries. Once slots fill up, relations doors close.</p>
         </div>
       </div>
     </section>
 
-    <!-- Footer Section -->
+    <!-- SECTION 8: VENUE -->
+    <section class="section section-dark" id="venue">
+      <div class="container">
+        <h2 class="section-title text-center">Venue</h2>
+
+        <div class="venue-block">
+          <div class="venue-details-card">
+            <h3>Club Nirvana</h3>
+            <p class="venue-address">Opposite Nirali Dhani, Ram Nagar, Chopasni Road, Jodhpur, Rajasthan 342001</p>
+            
+            <div class="venue-rules">
+              <div class="rule-item">Reception opens at 19:00 hrs.</div>
+              <div class="rule-item">Unique QR code tickets scanned upon approach.</div>
+            </div>
+
+            <a href="https://maps.google.com/?q=Club+Nirvana+Jodhpur" class="btn btn-gold w-full text-center" target="_blank">Locate Venue</a>
+          </div>
+
+          <div class="venue-map">
+            <iframe 
+              src="https://maps.google.com/maps?q=Club%20Nirvana,%20Jodhpur&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 9: FAQ ACCORDION -->
+    <section class="section section-darker" id="faq">
+      <div class="container container-narrow">
+        <h2 class="section-title text-center">FAQ</h2>
+
+        <div class="faq-accordion">
+          <!-- Q1 -->
+          <div class="faq-item">
+            <button class="faq-trigger">
+              <span>What time does entry start?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-panel">
+              <p>Doors open at 19:00 hours. Guests are advised to arrive early for direct check-in. VIP reservations receive priority lanes.</p>
+            </div>
+          </div>
+
+          <!-- Q2 -->
+          <div class="faq-item">
+            <button class="faq-trigger">
+              <span>Can I reserve a table?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-panel">
+              <p>Yes, we offer Small VIP Tables (up to 4 guests) and Big VIP Tables (up to 8 guests). Select a VIP pass option to request bottle service layout details directly from guest relations.</p>
+            </div>
+          </div>
+
+          <!-- Q3 -->
+          <div class="faq-item">
+            <button class="faq-trigger">
+              <span>How do I receive my pass?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-panel">
+              <p>Upon verification of your request and confirmation, our guest coordinator will send the verified digital QR code pass directly to you on WhatsApp.</p>
+            </div>
+          </div>
+
+          <!-- Q4 -->
+          <div class="faq-item">
+            <button class="faq-trigger">
+              <span>How does QR entry work?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-panel">
+              <p>Present the digital QR ticket on your mobile screen to our gate hosts. The pass is scanned for rapid access checks.</p>
+            </div>
+          </div>
+
+          <!-- Q5 -->
+          <div class="faq-item">
+            <button class="faq-trigger">
+              <span>Are refunds available?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-panel">
+              <p>All allocations and table reservations are final and cannot be refunded. Name transfers on ticket lists can be requested before 14:00 hours on event day.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 10: FOOTER -->
     <footer class="footer">
-      <div class="footer-logo">HOUSE OF <span>CHAOS</span></div>
-      <div class="footer-meta">25 JULY • CLUB NIRVANA • JODHPUR</div>
-      
-      <div class="footer-socials">
-        <a href="https://www.instagram.com/officialhouseofchaos" class="social-link" target="_blank">Instagram</a>
-        <a href="https://wa.me/917023438522" class="social-link" target="_blank">WhatsApp</a>
-      </div>
-      
-      <div class="footer-attribution">
-        MADE BY <img src="assets/madsphere_logo.png" alt="MADSPHERE" class="attribution-logo">
-      </div>
-      
-      <div class="footer-copyright">
-        © House of Chaos. All Rights Reserved.
+      <div class="container text-center">
+        <h2 class="footer-logo">HOUSE OF <span>CHAOS</span></h2>
+        <div class="footer-meta">25 JULY / CLUB NIRVANA / JODHPUR</div>
+        
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/officialhouseofchaos" target="_blank" class="footer-social-link">Instagram</a>
+          <a href="#" class="footer-social-link whatsapp-link">WhatsApp</a>
+        </div>
+        
+        <div class="footer-attribution">
+          MADE BY <img src="assets/madsphere_logo.png" alt="MADSPHERE" class="attribution-logo" onerror="this.style.display='none'"> MADSPHERE
+        </div>
+
+        <div class="footer-copyright">
+          &copy; <span id="year">2026</span> House of Chaos. All Rights Reserved.
+        </div>
       </div>
     </footer>
 
+    <!-- STICKY MOBILE CTA -->
+    <div class="sticky-cta">
+      <div class="sticky-cta-content">
+        <div class="sticky-cta-info">
+          <span class="sticky-cta-title">Reserve Access</span>
+          <span class="sticky-cta-sub" id="sticky-ticket-alert">52/80 Passes Allocated</span>
+        </div>
+        <a href="#" class="btn btn-gold btn-sm whatsapp-link">WhatsApp Request</a>
+      </div>
+    </div>
+
   </div>
 
-  <!-- Lenis Smooth Scroll -->
   <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.19/dist/lenis.min.js"></script>
-  <!-- JavaScript Link -->
   <script src="script.js"></script>
 </body>
 </html>

@@ -1,32 +1,117 @@
 /* ==========================================================================
    HOUSE OF CHAOS - LUXURY INTERACTIVE SCRIPT
-   Aesthetics: Dubai Nightlife, Rolex, Bentley, Exclusive Members Clubs
+   Aesthetics: Dubai Nightlife, Exclusive Members Clubs, Dark & Champagne Gold
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
+  const config = loadAdminConfig();
+  
   initLoader();
   initHeaderScroll();
   initCanvasParticles();
-  initScrollReveal();
-  initWhatsAppBooking();
+  applyAdminConfig(config);
+  initWhatsAppBooking(config);
   initMobileMenu();
   initCardGlow();
+  initFAQAccordion();
   initLenis();
 });
 
-/* 1. Page Loader Control */
+/* 1. Load Admin Configuration JSON */
+function loadAdminConfig() {
+  try {
+    const configEl = document.getElementById('admin-config');
+    if (configEl) {
+      return JSON.parse(configEl.textContent);
+    }
+  } catch (e) {
+    console.error('Error parsing admin-config JSON', e);
+  }
+  return {
+    eventDate: "25 July",
+    eventTime: "7 PM Onwards",
+    venueName: "Club Nirvana",
+    venueLocation: "Jodhpur",
+    contactNumber: "917023438522",
+    passesTotal: 80,
+    passesReserved: 52,
+    currentPhase: "PHASE 1",
+    prices: {
+      "stag": 699,
+      "stagCover": 1500,
+      "couple": 599,
+      "coupleCover": 2000,
+      "girls": 0,
+      "girlsCover": 1000,
+      "vipSmall": 7999,
+      "vipBig": 11999
+    }
+  };
+}
+
+/* 2. Apply Admin Settings to HTML Elements */
+function applyAdminConfig(config) {
+  // Date & Time Elements
+  const dateEl = document.getElementById('meta-date');
+  const venueEl = document.getElementById('meta-venue');
+  const timeEl = document.getElementById('meta-time');
+  const phaseEl = document.getElementById('phase-badge');
+
+  if (dateEl) dateEl.textContent = config.eventDate.toUpperCase();
+  if (venueEl) venueEl.textContent = `${config.venueName.toUpperCase()}, ${config.venueLocation.toUpperCase()}`;
+  if (timeEl) timeEl.textContent = config.eventTime.toUpperCase();
+  if (phaseEl) phaseEl.textContent = config.currentPhase.toUpperCase();
+
+  // Pricing Elements
+  const priceStag = document.getElementById('price-stag');
+  const priceStagCover = document.getElementById('price-stag-cover');
+  const priceCouple = document.getElementById('price-couple');
+  const priceCoupleCover = document.getElementById('price-couple-cover');
+  const priceGirls = document.getElementById('price-girls');
+  const priceGirlsCover = document.getElementById('price-girls-cover');
+  const priceVipSmall = document.getElementById('price-vip-small');
+  const priceVipBig = document.getElementById('price-vip-big');
+
+  if (priceStag) priceStag.textContent = `₹${config.prices.stag}`;
+  if (priceStagCover) priceStagCover.textContent = `₹${config.prices.stagCover}`;
+  if (priceCouple) priceCouple.textContent = `₹${config.prices.couple}`;
+  if (priceCoupleCover) priceCoupleCover.textContent = `₹${config.prices.coupleCover}`;
+  if (priceGirls) priceGirls.textContent = config.prices.girls === 0 ? "FREE" : `₹${config.prices.girls}`;
+  if (priceGirlsCover) priceGirlsCover.textContent = `₹${config.prices.girlsCover}`;
+  if (priceVipSmall) priceVipSmall.textContent = `₹${config.prices.vipSmall.toLocaleString('en-IN')}`;
+  if (priceVipBig) priceVipBig.textContent = `₹${config.prices.vipBig.toLocaleString('en-IN')}`;
+
+  // Capacity / Urgency Elements
+  const reservedEl = document.getElementById('tickets-reserved');
+  const remainingEl = document.getElementById('tickets-remaining');
+  const progressFill = document.getElementById('tickets-progress-fill');
+  const stickyAlert = document.getElementById('sticky-ticket-alert');
+
+  const reserved = config.passesReserved;
+  const total = config.passesTotal;
+  const remaining = Math.max(0, total - reserved);
+  const percentage = Math.min(100, Math.floor((reserved / total) * 100));
+
+  if (reservedEl) reservedEl.textContent = reserved;
+  if (remainingEl) remainingEl.textContent = remaining;
+  if (progressFill) progressFill.style.width = `${percentage}%`;
+  if (stickyAlert) stickyAlert.textContent = `${reserved}/${total} Passes Reserved`;
+}
+
+/* 3. Page Loader Control */
 function initLoader() {
   const loader = document.getElementById('loader');
   if (loader) {
     window.addEventListener('load', () => {
       setTimeout(() => {
         loader.classList.add('loaded');
-      }, 1200); // Elegant delay to appreciate the entry logo shimmer
+        document.body.classList.remove('loading');
+      }, 1000);
     });
   }
 }
 
-/* 2. Header Scroll Effect */
+/* 4. Header Scroll Effect */
 function initHeaderScroll() {
   const header = document.querySelector('.nav-header');
   window.addEventListener('scroll', () => {
@@ -38,7 +123,7 @@ function initHeaderScroll() {
   });
 }
 
-/* 3. Gold Particles Canvas Animation */
+/* 5. Gold Particles Canvas Animation */
 function initCanvasParticles() {
   const canvas = document.getElementById('particle-canvas');
   if (!canvas) return;
@@ -56,19 +141,18 @@ function initCanvasParticles() {
   class Particle {
     constructor() {
       this.x = Math.random() * width;
-      this.y = Math.random() * height + height; // Start below the visible screen or randomly
-      this.size = Math.random() * 2.5 + 0.5; // Small premium dust/spark size
-      this.speedY = -(Math.random() * 0.8 + 0.2); // Slow upward float
-      this.speedX = Math.random() * 0.4 - 0.2; // Slight horizontal drift
-      this.opacity = Math.random() * 0.5 + 0.1;
-      this.color = Math.random() > 0.5 ? '#D4AF37' : '#E5C56D'; // Gold vs Champagne
+      this.y = Math.random() * height + height;
+      this.size = Math.random() * 2 + 0.5;
+      this.speedY = -(Math.random() * 0.6 + 0.2);
+      this.speedX = Math.random() * 0.3 - 0.15;
+      this.opacity = Math.random() * 0.4 + 0.1;
+      this.color = Math.random() > 0.5 ? '#D4AF37' : '#F5E6C4';
     }
 
     update() {
       this.y += this.speedY;
       this.x += this.speedX;
 
-      // Wrap around screen top/sides
       if (this.y < 0) {
         this.y = height + 10;
         this.x = Math.random() * width;
@@ -82,8 +166,6 @@ function initCanvasParticles() {
       ctx.save();
       ctx.globalAlpha = this.opacity;
       ctx.fillStyle = this.color;
-      ctx.shadowBlur = 4;
-      ctx.shadowColor = '#D4AF37';
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
       ctx.fill();
@@ -93,10 +175,9 @@ function initCanvasParticles() {
 
   function init() {
     particlesArray = [];
-    const numberOfParticles = Math.floor((width * height) / 9000); // Balanced particle density
+    const numberOfParticles = Math.floor((width * height) / 10000);
     for (let i = 0; i < numberOfParticles; i++) {
       particlesArray.push(new Particle());
-      // Distribute particles across initial height
       particlesArray[i].y = Math.random() * height;
     }
   }
@@ -114,128 +195,74 @@ function initCanvasParticles() {
   animate();
 }
 
-/* 4. Intersection Observer scroll reveal */
-function initScrollReveal() {
-  const revealElements = document.querySelectorAll('.reveal');
-  
-  const revealCallback = (entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('active');
-        // Unobserve to run animation once
-        observer.unobserve(entry.target);
-      }
+/* 6. WhatsApp Link and Booking Management */
+function initWhatsAppBooking(config) {
+  const contact = config.contactNumber;
+
+  // General inquiry links
+  const generalMsg = `Hi House of Chaos Team, I would like to enquire about passes for House of Chaos on ${config.eventDate} at ${config.venueName}, ${config.venueLocation}.`;
+  const encodedGeneral = encodeURIComponent(generalMsg);
+  const generalUrl = `https://wa.me/${contact}?text=${encodedGeneral}`;
+
+  document.querySelectorAll('.whatsapp-link').forEach(link => {
+    link.setAttribute('href', generalUrl);
+    link.setAttribute('target', '_blank');
+  });
+
+  // Ticket tier booking buttons
+  document.querySelectorAll('.pass-booking-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const passName = btn.getAttribute('data-pass');
+      
+      const message = `Hi House of Chaos Team,
+
+I would like to reserve:
+
+${passName}
+
+Please share booking details.
+
+Thank you.`;
+
+      const encodedMsg = encodeURIComponent(message);
+      const bookingUrl = `https://wa.me/${contact}?text=${encodedMsg}`;
+      window.open(bookingUrl, '_blank');
     });
-  };
-
-  const revealObserver = new IntersectionObserver(revealCallback, {
-    root: null,
-    threshold: 0.15,
-    rootMargin: '0px 0px -50px 0px'
-  });
-
-  revealElements.forEach(element => {
-    revealObserver.observe(element);
   });
 }
 
-/* 5. WhatsApp Form Redirection Handler */
-function initWhatsAppBooking() {
-  const enquiryForm = document.getElementById('enquiry-form');
-  if (!enquiryForm) return;
-
-  enquiryForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    const name = document.getElementById('enquiry-name').value.trim();
-    const phone = document.getElementById('enquiry-phone').value.trim();
-    const guests = document.getElementById('enquiry-guests').value.trim();
-
-    if (!name || !phone || !guests) {
-      alert('Please fill in all the details to request your exclusive entry.');
-      return;
-    }
-
-    const message = `Hello House of Chaos Team,
-
-Name: ${name}
-Phone: ${phone}
-Guests: ${guests}
-
-I would like to enquire about passes for House of Chaos on 25 July at Club Nirvana, Jodhpur.
-
-Please share the details.`;
-
-    const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/917023438522?text=${encodedMessage}`;
-
-    // Open WhatsApp link in new tab
-    window.open(whatsappUrl, '_blank');
-  });
-}
-
-/* 6. Mobile Navigation Menu Toggle */
+/* 7. Mobile Navigation Menu Toggle */
 function initMobileMenu() {
   const toggle = document.querySelector('.mobile-menu-toggle');
   const navLinks = document.querySelector('.nav-links');
   
   if (toggle && navLinks) {
     toggle.addEventListener('click', () => {
-      const isVisible = navLinks.style.display === 'flex';
+      const isVisible = navLinks.classList.contains('active');
       
       if (isVisible) {
-        navLinks.style.opacity = '0';
-        setTimeout(() => {
-          navLinks.style.display = 'none';
-        }, 300);
-        toggle.querySelectorAll('span').forEach((bar, index) => {
-          if (index === 0) bar.style.transform = 'none';
-          if (index === 1) bar.style.opacity = '1';
-          if (index === 2) bar.style.transform = 'none';
-        });
+        navLinks.classList.remove('active');
+        toggle.classList.remove('active');
       } else {
-        navLinks.style.display = 'flex';
-        navLinks.style.flexDirection = 'column';
-        navLinks.style.position = 'absolute';
-        navLinks.style.top = '100%';
-        navLinks.style.left = '0';
-        navLinks.style.width = '100%';
-        navLinks.style.background = 'rgba(5, 5, 5, 0.98)';
-        navLinks.style.padding = '40px 20px';
-        navLinks.style.borderBottom = '1px solid rgba(212, 175, 55, 0.15)';
-        
-        setTimeout(() => {
-          navLinks.style.opacity = '1';
-        }, 10);
-        
-        // Transform sandwich bar to 'X' icon
-        toggle.querySelectorAll('span').forEach((bar, index) => {
-          if (index === 0) bar.style.transform = 'translateY(7px) rotate(45deg)';
-          if (index === 1) bar.style.opacity = '0';
-          if (index === 2) bar.style.transform = 'translateY(-7px) rotate(-45deg)';
-        });
+        navLinks.classList.add('active');
+        toggle.classList.add('active');
       }
     });
 
-    // Close menu when link is clicked (on mobile)
+    // Close menu when a navigation link is clicked
     navLinks.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
-        if (window.innerWidth <= 768) {
-          navLinks.style.display = 'none';
-          toggle.querySelectorAll('span').forEach((bar, index) => {
-            if (index === 0) bar.style.transform = 'none';
-            if (index === 1) bar.style.opacity = '1';
-            if (index === 2) bar.style.transform = 'none';
-          });
-        }
+        navLinks.classList.remove('active');
+        toggle.classList.remove('active');
       });
     });
   }
 }
 
-/* 7. Pass Card Cursor Glow Tracking */
+/* 8. Pass Card Cursor Glow Tracking */
 function initCardGlow() {
-  const cards = document.querySelectorAll('.pass-card');
+  const cards = document.querySelectorAll('.pass-card, .vip-card');
   cards.forEach(card => {
     card.addEventListener('pointermove', (e) => {
       const rect = card.getBoundingClientRect();
@@ -247,14 +274,47 @@ function initCardGlow() {
   });
 }
 
-/* 8. Lenis Inertial Scrolling Initialization */
+/* 9. FAQ Accordion Handler */
+function initFAQAccordion() {
+  const triggers = document.querySelectorAll('.faq-trigger');
+  
+  triggers.forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const parent = trigger.parentElement;
+      const isActive = parent.classList.contains('active');
+      
+      // Close other accordion panels
+      document.querySelectorAll('.faq-item').forEach(item => {
+        item.classList.remove('active');
+        const panel = item.querySelector('.faq-panel');
+        if (panel) {
+          panel.style.maxHeight = null;
+        }
+        const icon = item.querySelector('.faq-icon');
+        if (icon) icon.textContent = '+';
+      });
+
+      if (!isActive) {
+        parent.classList.add('active');
+        const panel = parent.querySelector('.faq-panel');
+        if (panel) {
+          panel.style.maxHeight = panel.scrollHeight + "px";
+        }
+        const icon = parent.querySelector('.faq-icon');
+        if (icon) icon.textContent = '-';
+      }
+    });
+  });
+}
+
+/* 10. Lenis Inertial Scrolling Initialization */
 function initLenis() {
   if (typeof Lenis !== 'undefined') {
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
-      smoothTouch: false // Ensure mobile scrolling stays native
+      smoothTouch: false
     });
 
     function raf(time) {
@@ -264,7 +324,7 @@ function initLenis() {
 
     requestAnimationFrame(raf);
 
-    // Wire Lenis with anchor links for seamless integration
+    // Sync Lenis with standard hash link scrolling
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -273,12 +333,11 @@ function initLenis() {
         const targetEl = document.querySelector(targetId);
         if (targetEl) {
           lenis.scrollTo(targetEl, {
-            offset: -80, // Account for fixed header height
-            duration: 1.5
+            offset: -80,
+            duration: 1.2
           });
         }
       });
     });
   }
 }
-
