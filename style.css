@@ -1466,4 +1466,173 @@ a {
   }
 }
 
+/* ==========================================================================
+   THE LINEUP & STAGGERED CLIP-REVEAL ANIMATIONS (Inspired by CIS MotionSystem)
+   ========================================================================== */
+.lineup-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-top: 56px;
+}
+
+@media (max-width: 900px) {
+  .lineup-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.lineup-card {
+  background: var(--bg-card);
+  border: 1px solid var(--glass-border);
+  border-top: 1px solid var(--glass-border-highlight);
+  border-radius: 6px;
+  padding: 48px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.lineup-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--gold-primary);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65), 0 0 30px rgba(212, 175, 55, 0.15);
+}
+
+.lineup-card-glow {
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  transition: transform 0.6s ease;
+}
+
+.lineup-card:hover .lineup-card-glow {
+  transform: scale(1.4);
+}
+
+.lineup-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: var(--gold-primary);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+  padding-bottom: 8px;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.lineup-header h3 {
+  font-size: 2.2rem;
+  font-family: var(--font-headings);
+  color: var(--text-primary);
+  margin-bottom: 6px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.lineup-handle {
+  font-family: monospace;
+  font-size: 0.88rem;
+  color: var(--gold-primary);
+  opacity: 0.9;
+  margin-bottom: 20px;
+}
+
+.lineup-bio {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+
+/* Animated Frequency & BPM Meters */
+.lineup-meters {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: 36px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.lineup-progress-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.lineup-progress-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  font-family: monospace;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.progress-val {
+  color: var(--gold-primary);
+  font-weight: 700;
+}
+
+.lineup-progress-bar {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #997822 0%, var(--gold-primary) 100%);
+  border-radius: 10px;
+  transition: width 1.4s cubic-bezier(0.05, 0.7, 0.1, 1);
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+}
+
+.lineup-insta-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.lineup-insta-btn svg {
+  transition: transform 0.3s ease;
+}
+
+.lineup-insta-btn:hover svg {
+  transform: translate(3px, -3px);
+}
+
+/* ScrollReveal Clip & Scale Animation States */
+.scroll-reveal-clip {
+  opacity: 0;
+  transform: translateY(48px) scale(0.95);
+  clip-path: inset(8% 8% 8% 8% round 8px);
+  transition: opacity 0.8s cubic-bezier(0.05, 0.7, 0.1, 1),
+              transform 0.8s cubic-bezier(0.05, 0.7, 0.1, 1),
+              clip-path 0.8s cubic-bezier(0.05, 0.7, 0.1, 1);
+}
+
+.scroll-reveal-clip.revealed {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  clip-path: inset(0% 0% 0% 0% round 8px);
+}
+
+
 

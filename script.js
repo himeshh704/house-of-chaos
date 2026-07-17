@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCardGlow();
   initFAQAccordion();
   initLenis();
+  initLineupAnimations();
 });
 
 /* 1. Load Admin Configuration JSON */
@@ -341,3 +342,39 @@ function initLenis() {
     });
   }
 }
+
+/* 11. Staggered Clip-Reveal & Animated Meter Progress for DJ Lineup */
+function initLineupAnimations() {
+  const cards = document.querySelectorAll('.scroll-reveal-clip');
+  if (!cards.length) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const card = entry.target;
+        const delay = parseInt(card.getAttribute('data-delay') || '0', 10);
+        
+        setTimeout(() => {
+          card.classList.add('revealed');
+          
+          // Trigger progress fill animations inside this revealed card
+          const progressFills = card.querySelectorAll('.progress-fill');
+          progressFills.forEach(fill => {
+            const targetWidth = fill.getAttribute('data-width');
+            if (targetWidth) {
+              fill.style.width = targetWidth;
+            }
+          });
+        }, delay);
+
+        observer.unobserve(card);
+      }
+    });
+  }, {
+    threshold: 0.15,
+    rootMargin: '0px 0px -50px 0px'
+  });
+
+  cards.forEach(card => observer.observe(card));
+}
+
