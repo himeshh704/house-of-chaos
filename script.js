@@ -38,12 +38,12 @@ function loadAdminConfig() {
     passesReserved: 52,
     currentPhase: "PHASE 1",
     prices: {
-      "stag": 699,
-      "stagCover": 1500,
-      "couple": 599,
-      "coupleCover": 2000,
-      "girls": 0,
-      "girlsCover": 1000,
+      "stag": 1499,
+      "stagCover": 2399,
+      "couple": 1799,
+      "coupleCover": 2500,
+      "girls": 999,
+      "girlsCover": 2000,
       "vipSmall": 7999,
       "vipBig": 11999
     }
